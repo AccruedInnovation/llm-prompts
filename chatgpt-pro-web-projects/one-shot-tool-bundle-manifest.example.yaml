@@ -1,0 +1,102 @@
+schema_version: 1
+bundle_id: "replace-with-stable-id"
+created_at: "YYYY-MM-DDTHH:MM:SSZ"
+target:
+  os: linux
+  distribution: debian
+  distribution_version: "13"
+  architecture: x86_64
+  libc: glibc
+  minimum_glibc: "2.41"
+
+policy:
+  task_local_only: true
+  global_install_authorized: false
+  network_authorized: false
+  remote_mutation_authorized: false
+  publication_authorized: false
+  credentials_included: false
+  verify_checksums_before_execution: true
+
+checksums_file: "SHA256SUMS"
+licences_directory: "licences"
+
+tools:
+  - name: bd
+    version: "1.1.0"
+    path: "bin/bd"
+    sha256: "replace"
+    upstream_project: "gastownhall/beads"
+    release_identity: "v1.1.0"
+    licence: "replace"
+    linkage: "static-or-dynamic"
+    runtime_requirements: []
+    network_required: false
+    bundled_data: []
+    purpose: "Optional dependency-aware execution ledger"
+    authorized_uses:
+      - "task-local work graph"
+      - "blocker, finding, discovered-work, and repair tracking"
+    prohibited_uses:
+      - "remote synchronization"
+      - "editing project instructions or hooks without explicit need"
+    invocation_notes: "Use task-specific BEADS_DIR and stealth/non-invasive mode; one authoritative writer in embedded mode."
+
+  - name: jj
+    version: "0.43.0"
+    path: "bin/jj"
+    sha256: "replace"
+    upstream_project: "jj-vcs/jj"
+    release_identity: "v0.43.0"
+    licence: "replace"
+    linkage: "static-or-dynamic"
+    runtime_requirements: []
+    network_required: false
+    bundled_data: []
+    purpose: "Optional change-oriented VCS and operation-log recovery"
+    authorized_uses:
+      - "task-local repository/workspace operations"
+    prohibited_uses:
+      - "remote push"
+      - "global configuration mutation"
+    invocation_notes: "Use only when already project-native or materially useful; inspect Git colocation before mutating."
+
+  - name: yq
+    version: "replace"
+    path: "bin/yq"
+    sha256: "replace"
+    upstream_project: "mikefarah/yq"
+    release_identity: "replace"
+    licence: "replace"
+    linkage: "static-or-dynamic"
+    runtime_requirements: []
+    network_required: false
+    bundled_data: []
+    purpose: "Structured YAML and adjacent-format processing"
+    authorized_uses:
+      - "task-local inspection and transformation"
+    prohibited_uses: []
+    invocation_notes: "Use the Go yq implementation identified by this manifest."
+
+  - name: ast-grep
+    version: "replace"
+    path: "bin/ast-grep"
+    sha256: "replace"
+    upstream_project: "ast-grep/ast-grep"
+    release_identity: "replace"
+    licence: "replace"
+    linkage: "static-or-dynamic"
+    runtime_requirements: []
+    network_required: false
+    bundled_data: []
+    purpose: "Syntax-aware code search, linting, and rewrites"
+    authorized_uses:
+      - "task-local structural inspection and transformation"
+    prohibited_uses: []
+    invocation_notes: "Invoke as ast-grep, not sg."
+
+# Add language toolchains, offline dependency stores, scanner databases, and
+# agent harnesses as separate entries. For bundled databases, include snapshot
+# date, format version, and SHA-256. For an agent harness, separately state the
+# provider, credential, network, spend, concurrency, workspace, and effect
+# authority; the binary alone does not create genuine sub-agent capability.
