@@ -1,0 +1,107 @@
+--- before/systems-design-prompts-territories-r1/systems-design-planner-adversarial-review-prompt-v2.md
++++ after/02-systems-design-planner-adversarial-review-prompt-v4.md
+@@ -1,9 +1,11 @@
+ # Adversarial Review and Repair of a Systems Design Plan
+ 
+-**Version:** 2.0 · Context-bounded territory review · 2026-09-08  
+-**Primary contract:** `systems-design-planner-prompt-v3.md`, version 3, set revision `coordinated-r1`, stage amendment `systems-territories-r1`  
++**Version:** 4 · Harmonized, context-bounded workflow · 2026-09-08  
++**Set revision:** `harmonized-v4`  
++**Primary contract:** [01-systems-design-planner-prompt-v4.md](01-systems-design-planner-prompt-v4.md), version 4  
+ **Role:** Systems design reviewer and bounded revision author  
+-**Default mode:** `REVIEW_AND_REVISE`
++**Default mode:** `REVIEW_AND_REVISE`  
++**Release status:** Candidate for workflow trials
+ 
+ Act as an adversarial systems design reviewer. Review the **output of an agent following the Systems Design Planner prompt**, not the planner prompt itself. Determine whether the proposed direction solves the right problem, rests on sound reasoning and sufficient evidence, respects its authority and constraints, and gives the next architecture author a usable assignment. Then improve the actual planning package within the authority defined below.
+ 
+@@ -13,7 +15,7 @@
+ 
+ The normal path is: **bind the original assignment and candidate → review without editing → investigate material concerns → record supported findings → repair within authority → challenge the revised result → deliver the review and complete revised planning material.** A critique alone does not complete `REVIEW_AND_REVISE` when supported repairs are possible.
+ 
+-Use the exact planner edition governing the candidate. Version 3 is the default for new assignments. When reviewing a v2 plan, use these bounded review methods but assess conformance against v2; absent territory formatting is not a retroactive violation. Label newly proposed obligations as improvements unless the current assignment adopts them. This companion reviews planning output, not the source prompt, and does not update the architecture or PRD stages.
++Use the exact authoring edition governing the candidate; v4 is the default for new assignments. Apply these bounded review methods to earlier packages without treating new formatting as a retroactive defect. Cite the governing obligation for conformance findings; label new obligations as proposals unless the current assignment adopts them. A supported failure of an existing outcome, contract, context-fit, or handoff rule remains a finding. References to numbered sections mean this review prompt unless marked **planner §**.
+ 
+ ## 1. Establish the assignment and review baseline
+ 
+@@ -79,7 +81,7 @@
+ | Direction | Coherent recommendation, credible alternatives, rationale, consequential trade-offs, sufficient decision evidence. | Routine local implementation choices. |
+ | Shared behavior | Responsibilities, likely boundaries, critical interactions, ownership, and failure/recovery obligations deep enough to choose the direction. | Complete shared architecture contracts unless planning already needs their exact semantics. |
+ | Evidence | Resolution of uncertainties that could change the present direction or invalidate the next assignment. | Qualification of not-yet-written code whose intended behavior and future proof obligations are clear. |
+-| Handoff | Fixed obligations, bounded architecture questions, owners, authority, dependencies, required design work, and acceptance expectations; under v3, territory assignments and task-sized reading routes where needed. | PRDs, exhaustive schemas, acceptance fixtures, command profiles, and dispatch-ready slices. |
++| Handoff | Fixed obligations, bounded architecture questions, owners, authority, dependencies, required design work, and acceptance expectations; under v4, territory assignments and task-sized reading routes where needed. | PRDs, exhaustive schemas, acceptance fixtures, command profiles, and dispatch-ready slices. |
+ 
+ Go deeper when exact semantics, an algorithm, a representation, a timing bound, or a concrete experiment is necessary to establish a consequential planning choice. Do not call a direction settled while its feasibility depends on an unanswered detail. Conversely, do not block a sound plan because an architecture author still has legitimate design work to do.
+ 
+@@ -95,21 +97,21 @@
+ 
+ ### Schedule bounded, connected review units
+ 
+-Use the existing coverage record for a small review schedule. Each unit identifies its subject or coherent question, applicable obligations, exact required source sections and revisions, dependencies, authority/access limits, checks, and evidence-bearing result. One unit may cover several related concerns, and one session may cover several units when context permits. Do not require another file or agent per unit.
+-
+-Use three complementary kinds of review at planning depth:
++Use the existing coverage record. Each unit names its scope/question, obligations, exact source sections and revisions, dependencies, access/authority limits, checks, and evidence-bearing return. One unit may cover several concerns; one session may cover several units. No file or agent per unit is required. Apply planning depth: resolve direction-changing questions and assign legitimate later architecture detail.
++
++Challenge the author's decomposition against the original assignment, canonical allocation, actual artifacts, producers/consumers, shared resources, and lifecycle paths. Find omitted parent duties and hidden dependencies. For older packages, derive a temporary schedule from real responsibilities rather than impose new formatting.
+ 
+ | Review kind | Required focus |
+ | --- | --- |
+-| Local or territory | Test the assigned contribution, direction, evidence, inherited obligations, imported assumptions, and recipient usability. Cover the obligations allocated to that unit, not only its headings. |
+-| Boundary | Inspect the canonical rule or bounded shared question and both sides' relevant obligations together. Test local compliance with incompatible meaning, authority, identity, timing, ordering, commitment, failure, recovery, or compatibility. Include shared state/resources and implicit dependencies, not only APIs. |
+-| Integrated outcome | Trace material consumer scenarios and spanning invariants across the needed territories, including relevant failure, restart, recovery, migration, and combined resource/timing limits. Pairwise agreement and local passes do not prove the combined result. |
+-
+-These are logical duties, not a required three-agent structure. Small work may fit one pass. For a large tightly coupled subject, divide review by coherent questions rather than forcing new architectural boundaries. A divided scenario needs explicit shared assumptions, intermediate states/results, and a check of the joined conclusion; separate plausible traces are not enough.
+-
+-Assess context fit before each substantive unit. Include applicable instructions, local subject, required shared definitions and referenced evidence, expected tool results, and working/repair/output reserve. A short assignment with a huge required reference set is not bounded. State estimates and uncertainty, using an actual recipient profile when known rather than inventing capacity. Use bounded retrieval or smaller units when needed; preserve the controlling conditions and the checks that connect units. Do not omit required reading to claim completion.
+-
+-Prioritize depth where a defect could change the direction, violate a protected constraint, or cause substantial rework. Cover all applicable obligations across the declared review; do not survey unrelated history or every tool. A scoped reviewer may discover a cross-scope issue: preserve evidence, identify affected owners and obligations, and return it for bounded allocation. Do not ignore it, silently expand the unit until context is exhausted, or alter another owner's contract.
++| Local or territory | Check direction, evidence, inherited duties, imported assumptions, and architecture-recipient usability. |
++| Boundary | Inspect one canonical rule and both sides' obligations together. Test incompatible meaning, authority, identity, timing, ordering, commitment, failure, recovery, or compatibility despite local compliance. Include implicit dependencies and shared resources. |
++| Integrated outcome | Trace material consumer scenarios and spanning invariants, including failure, restart, recovery, migration, and combined resource/timing limits where relevant. Local passes and pairwise agreement do not prove the result. |
++
++These are duties, not three required agents. Small work may fit one pass. Divide tightly coupled questions rather than force new runtime boundaries. For divided scenarios, check common assumptions, intermediate states/results, and the joined conclusion.
++
++**Context accounting.** Before substantial work, assess what must fit together: applicable instructions, local subject, required shared definitions and evidence, expected tool results, and room for analysis, repair, and output. Count retrieved detail, not only the entry page. State estimates and their basis; word counts are not measured model capacity. Use a known profile where supplied; otherwise declare needs and a fit check before assignment or dispatch. Keep read-now, retrieve-for-check, and background roles separate from reference availability. Use bounded retrieval, staged work, or smaller coherent questions without dropping controlling rules, exceptions, or necessary evidence. No fixed word limit, context percentage, territory count, or split depth applies.
++
++Track assigned and actually examined obligations and relationships, applicability, subject location/revision, method, substantive result, evidence/limits, findings, and unreviewed scope. File-open counts, matching IDs, and samples do not establish unreviewed work. Mechanical checks and semantic review do not substitute for each other. A reviewer context/access limit alone does not prove a recipient defect.
+ 
+ ### Use delegation without shifting the whole burden to the lead
+ 
+@@ -383,7 +385,7 @@
+ | `BLOCKED` | A necessary decision, authority, or design-critical fact prevents the named next assignment. Identify the exact dependency and work that may still continue. |
+ | `NOT_NEEDED` | An intentional no-build outcome or an adequate later-stage baseline makes this architecture-authoring assignment unnecessary. Name the disposition; never use it to conceal a gap. |
+ 
+-Check the governing planner's completion test: explicit outcome/boundary/smallest result; protected constraints and owners; coherent supported direction; traceable decisions/assumptions/evidence; shared and lifecycle treatment; bounded architecture choices; resolved or credibly bounded design-critical gaps; and a usable handoff. Under v3, include inherited obligations, shared-definition order, task-sized reading routes, context assessment, and local/boundary/integrated/recipient review coverage. A missing required check is not a passed check merely because the local design appears sound.
++Check the governing planner's completion test: explicit outcome/boundary/smallest result; protected constraints and owners; coherent supported direction; traceable decisions/assumptions/evidence; shared and lifecycle treatment; bounded architecture choices; resolved or credibly bounded design-critical gaps; and a usable handoff. Under v4, include inherited obligations, shared-definition order, task-sized reading routes, context assessment, and local/boundary/integrated/recipient review coverage. A missing required check is not a passed check merely because the local design appears sound.
+ 
+ Report approval separately as `CANDIDATE`, `APPROVED`, `REJECTED`, or `SUPERSEDED`, with the actual authority, scope, and revision. A revised candidate is not approved merely because its parent was approved. A review finding does not itself revoke the original approval. Preserve the record while stating whether its readiness claim remains supported.
+ 
+@@ -403,13 +405,15 @@
+ - The full affected local, boundary, integrated-outcome, and recipient checks; retained parent obligations and shared owners; context fit and reading routes from the delivery location; compatible shared revisions across combined evidence.
+ - Explicit dispositions for every material prior and new finding; no closure by omission, no stale validation attached to changed content.
+ 
+-Use exact candidate identification sufficient for the claim: an existing revision with relevant changes or an unchanged snapshot may suffice. Do not require a delivery platform, per-section hashes, recursive manifests, or repeated metadata repairs. Finish substantive edits before optional final integrity metadata; retain mandatory integrity checks and refresh affected evidence after changes. For a requested archive, inspect actual contents, extraction, and relative links; provide a detached digest when requested, required, or justified by a named integrity need. Do not claim portability or importer compatibility merely because it opens.
+-
+-Claim whole-package review completion only after applicable local obligations, material boundaries, and spanning invariants/scenarios have coverage at the required planning depth; applied repairs have their required rechecks; and every material prior and new finding has an explicit disposition. A review may be complete with unresolved findings or pending amendments; an unperformed required review unit or post-repair check remains unfinished review. Distinguish a reviewed defect from an unreviewed obligation. Several local reports, a file-open count, or a sample cannot establish full coverage.
++Use existing revisions or stable snapshots and a concise change record during content work. Finish substantive edits before optional final metadata. Check delivered contents, safe extraction when an archive is requested, and references from the delivery root. Produce a detached final checksum only when requested, required by governing policy, or justified by a named integrity need. Do not create recurring section hashes, self-hashing or recursive manifests, or metadata repair cycles. A change to meaning, a required location, or a proof-relevant binding triggers affected rechecks; a proven administrative change does not invalidate unrelated semantic evidence. This document policy does not weaken required product integrity checks or pre-execution verification of supplied tools. Do not claim portability or importer compatibility merely because an archive opens.
++
++Separate review assessment, required-check completion, candidate readiness, approval, and acceptance. A review assessment may finish with unresolved findings or demonstrated missing prerequisites. For each unavailable source, authority, or capability, record evidence of the gap, affected obligations and claims, owner, and closure method. This completes assessment of that gap, not the unavailable check or unseen content; mark the check unsatisfied, keep unverified repairs open, and preserve all dependent readiness and assurance limits.
++
++Claim whole-scope assessment only when every applicable local obligation, material boundary, spanning scenario, and required recipient check has either a supported assessment or that explicit gap disposition; every material finding has a disposition; and all feasible required rechecks of applied repairs have run. Work merely not inspected, or interrupted by context, session, or resource limits, remains unfinished—not a diagnosed prerequisite gap. A narrower completed assessment must name the original unreviewed remainder. Never describe a report on missing checks as full assurance, a successful recheck, or a ready candidate. Where missing sources prevent a status assessment, retain the candidate's status only as an unverified claim.
+ 
+ Stop when that review work and authorized repairs are complete, or a real limit prevents further work. Do not continue until no conceivable criticism exists. Cosmetic polishing, metadata-only changes, and repeated agreement do not justify another review cycle.
+ 
+-A complete review can conclude that the plan remains partial or blocked. Separate **review completion** from **plan readiness**. If access, authority, resources, or session limits prevent required review or rechecks, deliver useful results, the continuation record, actual unfinished scope, unverified changes, and the next bounded action. Do not call unfinished review complete, invent technical impossibility, silently narrow the claim, or promise background completion.
++A finished assessment can leave the plan partial or blocked under the rule above. When a real limit leaves review work unperformed, deliver the useful result, continuation, exact unreviewed scope, unverified changes, and next bounded action. Do not invent technical impossibility, shrink the claim silently, or promise background completion.
+ 
+ ## 16. Required deliverables
+ 
+@@ -467,7 +471,7 @@
+ 
+ ## Governing prompt and references
+ 
+-[`systems-design-planner-prompt-v3.md` or the exact earlier edition governing the candidate; stage amendment and adoption where applicable; design guidance and precedence; accepted/delegated decisions; source evidence; later-stage prompt only when needed for the handoff boundary.]
++[`01-systems-design-planner-prompt-v4.md` or the exact earlier edition governing the candidate; set revision and adoption where applicable; design guidance and precedence; accepted/delegated decisions; source evidence; later-stage prompt only when needed for the handoff boundary.]
+ 
+ ## Review mode, scope, and priority
+ 

@@ -1,0 +1,111 @@
+--- before/blueprint-bbk-one-shot-implementation-prompt-v3(1).md
++++ after/implementation/blueprint-bbk-one-shot-implementation-prompt-v4.md
+@@ -1,9 +1,12 @@
+ # One-Shot Blueprint / BBK Implementation Executor
+ 
+-**Revision:** 3.0 — PRD-bound execution, gated slices, protected acceptance, and exact-candidate delivery
+-
+-**Companion:** Coordinated three-stage prompts v2, set revision `coordinated-r1`  
+-**Status:** Review draft · 2026-09-04
++**Version:** 4 · Harmonized, PRD-bound execution · 2026-09-08  
++**Set revision:** `harmonized-v4`  
++**Edition:** Full — standalone; same authority, gates, and result rules  
++**Companions:** [PRD author v4](../05-PRD-implementability-authoring-prompt-v4.md) and [PRD reviewer v4](../06-PRD-implementability-adversarial-review-prompt-v4.md)  
++**Release status:** Candidate for workflow trials
++
++Use this edition or the other executor edition, not both in one instruction context. Consume the assigned packet and applicable rules, not all six design/review prompts. Accept adequate earlier packets under their actual governing edition; a version change alone does not invalidate their evidence or add formatting gates.
+ 
+ Act as the **implementation lead, delivery owner, and integrator** for the supplied PRD and assigned slices. Produce the working implementation, required evidence, and exact deliverables—not merely a plan, review, code sketch, or list of next steps.
+ 
+@@ -110,11 +113,23 @@
+ 
+ Use existing packet formats; do not demand a new manifest or duplicate the PRD. Missing headings alone are not a blocker when the needed information exists and the governing format allows it. A missing consequential contract, approval, evaluation method, or author-time obligation is not a formatting issue.
+ 
+-For coordinated PRD v2, only design `PASS` supports implementation-readiness. `PARTIAL` or `BLOCKED` does not authorize implementation under that PRD. Separately authorized discovery or an independently approved complete sub-scope must have its own boundaries and gates. Do not manufacture a missing fresh-context recipient review or treat an executor's self-review as that author-time evidence. Do not rerun valid author-time reviews by default; check their binding and required currentness.
++For PRDs using this suite's readiness contract, only design `PASS` supports implementation-readiness. `PARTIAL` or `BLOCKED` does not authorize implementation under that PRD. Separately authorized discovery or an independently approved complete sub-scope must have its own boundaries and gates. Do not manufacture a missing fresh-context recipient review or treat an executor's self-review as that author-time evidence. Do not rerun valid author-time reviews by default; check their binding and required currentness.
+ 
+ A prior `PASS` or `READY` label is not a substitute for inspecting its supporting evidence and changed conditions. Check actual predecessor outputs rather than assuming they match the author's original snapshot. Unrelated changes need not restart planning; changes to a relied-on contract or input require bounded impact review and requalification under the governing policy.
+ 
+ For a new project, verify the absence of an existing implementation and inspect supplied templates and contracts. A bootstrap slice may create the repository, package, and harness. Do not invent existing files or reject the assignment merely because those assigned outputs do not yet exist. Its authority, defined behavior, and non-circular evaluation path must exist at entry.
++
++### Territory handoff and review continuity
++
++Preserve the assigned PRD scope, territory/parent links, inherited obligations, shared-contract owners, integration duties, and final acceptance contributions. Use the supplied slices and their reading routes; do not create a competing decomposition or reopen the full planning corpus by default. A local pass is contribution evidence, not acceptance of a spanning requirement.
++
++**Context accounting.** Before substantial work, assess what must fit together: applicable instructions, local subject, required shared definitions and evidence, expected tool results, and room for analysis, repair, and output. Count retrieved detail, not only the entry page. State estimates and their basis; word counts are not measured model capacity. Use a known profile where supplied; otherwise declare needs and a fit check before assignment or dispatch. Keep read-now, retrieve-for-check, and background roles separate from reference availability. Use bounded retrieval, staged work, or smaller coherent questions without dropping controlling rules, exceptions, or necessary evidence. No fixed word limit, context percentage, territory count, or split depth applies.
++
++A known packet mismatch needs an authorized context/access adjustment or owner-routed packet repair. Never drop required reading, parent duties, recovery work, or select convenient children from an overall `PARTIAL` or `BLOCKED` PRD. A changed shared contract needs its owner's successor decision and the affected counterpart, integrated, and recipient rechecks before dependent use.
++
++Verify existing author-time evidence for the assigned slices: exact packet and shared revisions, actual coverage and answers, required freshness/exposure, and validity after changes. Preserve unaffected evidence; do not rerun all upstream review because execution begins or the suite version changes. A completed report diagnosing unavailable review does not satisfy that review. Executor self-review cannot replace mandatory fresh-recipient evidence.
++
++A suitability trial requires a separately authorized, complete experimental scope when its parent PRD is not ready. Bind its own design, packet, acceptance, containment, cleanup, permissions, and entry gates. The suitability claim under test is its output, not a prerequisite for its own experiment; all other applicable gates remain required. Trial permission does not authorize the parent implementation, and assisted results are not unaided success.
+ 
+ ### Workspace preflight
+ 
+@@ -168,7 +183,7 @@
+ 6. use Git status, diff, history, rename/deletion detection, and rollback as evidence aids;
+ 7. exclude `.git` and other VCS metadata from the final deliverable unless explicitly requested.
+ 
+-Do not require a remote. When Git is unavailable, the subject is dominated by enormous binaries/generated trees, or initialization would be disproportionate, use exact pre-change and final manifests, content hashes, and bounded backups instead.
++Do not require a remote. When Git is unavailable, the subject is dominated by enormous binaries/generated trees, or initialization would be disproportionate, use a preserved baseline or bounded backups and a concise change inventory instead. Add targeted digests only for required or otherwise necessary identity checks.
+ 
+ #### Jujutsu
+ 
+@@ -212,7 +227,7 @@
+ 
+ Do not assume package registries or the public internet are reachable from the execution shell. A failed installation attempt is not a reason to abandon the task when an installed tool, supplied artifact, project-native alternative, or simpler fallback can do the work.
+ 
+-Maintain an exact inventory of files and artifacts created, modified, replaced, or removed regardless of substrate. Where VCS is not used, record pre-change hashes for files you intend to modify when practical.
++Maintain an exact inventory of files and artifacts created, modified, replaced, or removed regardless of substrate. Without VCS, preserve enough baseline evidence for the required comparison; ordinary document edits do not require pre-change hashes.
+ 
+ When a language, domain, toolchain, or repository profile is supplied, use it as bounded procedural and validation guidance. It may refine vocabulary, idioms, inventory, tools, failure modes, and evidence, but it does not broaden scope, effects, authority, or evidence sufficiency. In mixed systems, let each profile govern only the part it can accurately cover and integrate the whole-system result yourself.
+ 
+@@ -428,7 +443,7 @@
+ 
+ Use independent or blind review when it contributes a real assurance property, especially for consequential interfaces, security, recovery, migrations, ambiguous behavior, or prior recurring findings. Do not use a fixed reviewer count or majority vote. One failed non-waivable assertion blocks that claim regardless of how many other reviews pass.
+ 
+-Reviewers should be read-only toward the candidate. Give each reviewer an exact context manifest: the subject and revision, applicable assertions, source coverage, generated material, omitted or redacted content, known staleness, prior findings exposure, and environment. Missing or materially incomplete context blocks the affected review claim rather than producing invented confidence. Route repair to an implementation role, then create a new candidate and re-run the affected checks.
++Reviewers should be read-only toward the candidate. Give each reviewer an exact context record in the assignment or existing notes: the subject and revision, applicable assertions, source coverage, generated material, omitted or redacted content, known staleness, prior findings exposure, and environment. Missing or materially incomplete context blocks the affected review claim rather than producing invented confidence. Route repair to an implementation role, then create a new candidate and re-run the affected checks.
+ 
+ Maintain finding identity and history. A finding is not closed merely because a later reviewer did not mention it. Record an explicit evidence-backed disposition, such as:
+ 
+@@ -487,19 +502,17 @@
+ 
+ ## 16. Final candidate and artifact integrity
+ 
+-Create an exact final candidate inventory before final qualification regardless of VCS. Record the actual setup: existing Git/`jj`, ephemeral Git, Beads, hashes, or a combination. Include relevant commits/change IDs, local changes, manifests, and actual pre-change evidence. A commit omitting uncommitted inputs does not identify the full candidate. Never claim historical diff coverage that was not captured.
+-
+-Record created, modified, replaced, and removed files; relevant hashes; canonical sources and generators; toolchain/environment; dependencies/locks; migrations; verification commands; retained scaffolding; and cleanup disposition. Modify canonical sources and regenerate projections unless the authorized task requires otherwise.
+-
+-Finish source-changing documentation, regeneration, and cleanup before the final freeze where possible. Any later repair, packaging change, or subject-changing cleanup refreshes the candidate identity and invalidates affected checks. Non-subject cleanup need not trigger unrelated checks, but record its boundary. Do not attach stale verification to the final subject.
+-
+-For an archive, installer, package, export, or other transferable deliverable, verify paths, contents, structure, extraction/opening, and digest. Test the required install or consumer path from that **actual artifact** in the specified clean environment, not only the authoring workspace. Use a separately identified disposable extraction/installation so the tested delivery artifact remains exact. Do not claim reproducibility, another platform, hardware qualification, or offline behavior from extraction alone.
+-
+-Keep secrets and restricted data out of reports, logs, inventories, and continuation records. Use approved secure evidence locations and useful redacted references without exposing credentials.
+-
+-Keep an acyclic inventory: identify the implementation/package candidate separately from result records and logs that refer to its digest. The outer handoff archive may have a detached checksum; do not require a manifest to hash itself. Qualify any required outer artifact behavior and report exactly which bytes each check covered.
+-
+-Preserve required evidence and continuation records before deleting their source store. Remove task-owned temporary processes, sockets, caches, credentials, workspaces, VCS/Beads metadata, and fixtures only within permission and retention rules. Exclude execution-only metadata from product delivery unless requested. Report incomplete cleanup and retained resources without deleting unrelated work or the only recoverable partial candidate.
++Identify the exact implementation candidate before final qualification. Use actual revisions or stable snapshots plus relevant local changes and a created/modified/replaced/removed inventory. Record canonical sources and generators, material toolchain/configuration/dependencies and locks, migrations, check commands, retained scaffolding, and cleanup disposition. A commit alone may omit uncommitted or generated inputs. Report only captured pre-change evidence; do not invent historical diff coverage. Modify canonical sources and regenerate projections unless authorized otherwise.
++
++Finish subject-changing documentation, generation, packaging preparation, and cleanup before final qualification where possible. A later repair or packaging change refreshes the affected subject identity and invalidates dependent checks. Non-subject cleanup needs its boundary recorded, not unrelated reruns. When impact is uncertain, run the justified broader checks. Never attach stale verification to the final subject.
++
++For an implementation archive, installer, package, or export, verify actual paths, contents, structure, extraction/opening, and final digest. Run required installation or consumer checks from that exact artifact in the specified clean environment using a separate disposable extraction. Record the tested artifact and environment. Workspace success or extraction alone does not prove installed behavior, reproducibility, another platform, hardware, or offline use. Final implementation-artifact binding is a named integrity need; it is not a rule to rehash working documents after each edit.
++
++Use existing revisions or stable snapshots and a concise change record during content work. Finish substantive edits before optional final metadata. Check delivered contents, safe extraction when an archive is requested, and references from the delivery root. Produce a detached final checksum only when requested, required by governing policy, or justified by a named integrity need. Do not create recurring section hashes, self-hashing or recursive manifests, or metadata repair cycles. A change to meaning, a required location, or a proof-relevant binding triggers affected rechecks; a proven administrative change does not invalidate unrelated semantic evidence. This document policy does not weaken required product integrity checks or pre-execution verification of supplied tools.
++
++Keep inventory acyclic: identify the implementation subject separately from logs and reports referring to it. Qualify any required behavior of the outer handoff archive; distinguish its bytes from the tested inner implementation artifact. When the outer archive itself is the tested implementation artifact, its final digest applies. Do not require a manifest to hash itself.
++
++Keep secrets and restricted data out of reports, logs, inventories, and continuation records; use approved evidence locations and safe redacted references. Preserve required evidence and continuation before deleting their store. Remove only authorized task-owned temporary processes, sockets, caches, credentials, workspaces, VCS/Beads state, and fixtures within retention rules. Exclude execution-only metadata unless requested. Report retained resources and incomplete cleanup without deleting user work or the only recoverable partial candidate.
+ 
+ ## 17. Completion criteria
+ 
+@@ -538,7 +551,7 @@
+ 
+ ### 3. Artifact Inventory
+ 
+-Provide accessible deliverables and created/modified/replaced/removed inventories; source and package digests; actual tool/VCS/work-graph use; useful diffs/commits and local-change coverage; and execution metadata intentionally excluded. Do not invent download paths or historical evidence.
++Provide accessible deliverables and created/modified/replaced/removed inventories; exact source/candidate identity and required package digests; actual tool/VCS/work-graph use; useful diffs/commits and local-change coverage; and execution metadata intentionally excluded. Do not invent download paths or historical evidence.
+ 
+ ### 4. Significant Implementation Decisions and Deviations
+ 
